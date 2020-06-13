@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name,age){
+            this.name = name,
+            this.age = age
+        }
+        Person.prototype.say=function(){
+            console.log(this.name+"年龄是"+this.age+"岁")
+        }
+        // 继承属性用.call()
+        function Coder(name,age){
+            // 此处的this是调用Coder的对象
+            Person.call(this,name,age)  //this传给Person
+        }
+        // 继承方法用原型
+        Coder.prototype = new Person()  //Coder的原型是构造函数 new Person()是一个实例化对象  实例化的方法传给构想函数，构造函数就会有相应的方法，这就很扯
+        Coder.prototype.constructor = Coder  //上一步，改变了Coder的指向，Coder指向了人的实例化对象，现在再改回去
+        var c1 = new Coder("Danny",20)
+        c1.say()
+    </script>
+</body>
+</html>
