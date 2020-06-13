@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原型
+        // 函数有一个prototype属性，这个属性是一个指针，指向他的原型对象
+        // 原型对象下创建的属性和方法，可以被实例化对象所共享
+        // 原型下有一个constructor属性，这个属性指向它的构造函数
+
+        // 原型链
+        // 当从一个对象那里调取属性或方法时，如果该对象自身不存在这样的属性或方法
+        // 就去自己关联的prototype对象那里去找，如果prototype没有
+        // 就去prototype关联的前辈prototype那里去找，
+        // 如果没有，以此类推找prototype.prototype引用的对象
+        // 直到找到undefined （Object的prototype是undefined）
+        // 这就是所谓的原型链
+    </script>
+</body>
+</html>
