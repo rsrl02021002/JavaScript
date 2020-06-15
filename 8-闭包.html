@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 什么是闭包闭包？
+        // 函数嵌套函数
+        // 内部函数引用外部函数的参数或变量
+
+        // 闭包的好处
+        // 避免全局变量污染
+
+        console.log("第一部分")
+        function fn1(){
+            var a = 20
+            console.log(a)
+        }
+        fn1()  //a是内部变量 fn1()执行结束后，释放资源a
+
+        console.log("第二部分")
+        function fn2(){
+            var a = 20
+            function fn3(){
+                a++
+                console.log(a)  //内部函数调用外部函数的变量，a不会被释放
+            }
+            fn3()
+        }
+        fn2()
+
+        console.log("第三部分")
+        function fn4(){
+            var a = 20
+            return function(){
+                a++
+                console.log(a)
+            }
+        }
+        var fn5 = fn4()  //fn5收到fn4返回给他的函数
+        fn5()  //21
+        fn5()  //a没有被释放，再次++，输出22
+        // 闭包的好处
+        // 避免全局变量污染
+
+        // ()()立即执行函数
+        console.log("立即执行函数化简闭包")
+        var fn6 = (function fn4(){
+            var a = 20
+            return function(){
+                a++
+                console.log(a)
+            }
+        })()  //(函数体)() 相当于执行了一次
+        fn6()
+        fn6()
+    </script>
+</body>
+</html>
