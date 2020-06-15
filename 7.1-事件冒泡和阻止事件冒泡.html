@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        var aUl = document.getElementsByTagName("ul")[0]
+        var aLi = document.getElementsByTagName("li")
+        aUl.onclick = function(){
+            console.log("我是ul")
+        }
+        // 没有阻止事件冒泡时
+        // for(var i=0;i<aLi.length;i++){
+        //     aLi[i].onclick = function(){
+        //         console.log("我是li")
+        //     }
+        // }
+        // 事件冒泡：此元素的事件触发，父元素的事件也触发，从内到外
+
+        // 阻止事件冒泡
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].onclick = function(e){
+                e.stopPropagation()
+                console.log("我阻止了事件冒泡")
+            }
+        }
+    </script>
+</body>
+</html>
