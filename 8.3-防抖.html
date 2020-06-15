@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <script>
+        var oBtn = document.getElementById("btn")
+
+        function fd(fn, tagTime) {
+            var timer = null
+            return function () {
+                clearTimeout(timer)
+                timer = setTimeout(function () {
+                    fn.call(this)
+                }.bind(this), tagTime)
+            }
+        }
+
+        oBtn.onclick = fd(function () {
+            console.log(Date.now())
+            console.log(this)
+        }, 1000)
+
+    </script>
+</body>
+
+</html>
