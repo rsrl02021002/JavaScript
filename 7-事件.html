@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #div1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    #div2{
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+    }
+    #div3{
+        width: 100px;
+        height: 100px;
+        background-color: green;
+    }
+</style>
+<body>
+    <div id="div1"></div>
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+    <script>
+        // 事件三要素 事件源 事件 事件处理结果(事件处理函数)
+        // 常见事件
+        //     onclick  //鼠标单击
+        //     ondblclick  //鼠标双击
+        //     onkeyup  //按下并释放键盘一个键
+        //     onchange  //文本内容或下拉菜单中选项改变
+        //     onfocus  //获得焦点
+        //     onblur  //失去焦点
+        //     onmouseover  //鼠标移入
+        //     onmouseout  //鼠标移出
+        //     onload  //网页文档加载
+        //     onunload  //关闭网页时
+        //     onsubmit  //提交表单时触发
+        //     onreset  //重置表单时触发
+
+        // 事件源和this的区别
+        //     有时相同，有时不同
+        //     相同的情况，没有冒泡和捕获时，点击div1，div1的事件触发，this和事件源相同
+        //     不同的情况，事件冒泡，事件绑定在div1的父元素，点击div1，事件触发，this是div1的父元素，事件源是div1
+        // 例如相同情况
+        // var oDiv1 = document.getElementById("div1")
+        // var oDiv2 = document.getElementById("div2")
+        // var oDiv3 = document.getElementById("div3")
+        // oDiv1.onclick = function(e){
+        //     console.log("事件源是",e.target)
+        //     console.log("this是",this)
+        //例如不同情况
+        // }
+        // oDiv2.onclick = function(e){
+        //     console.log("事件源是",e.target)
+        //     console.log("this是",this)
+        // }
+    </script>
+</body>
+</html>
