@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li class="li1">1</li>
+        <li class="li1">2</li>
+        <li class="li1">3</li>
+        <li class="li1">4</li>
+        <li class="li1">5</li>
+    </ul>
+
+    <script>
+        // call() apply() bind()
+        // 不同点1：传参
+        // 不同点2：调用
+
+        // var obj = {
+        //     name:"Danny"
+        // }
+        // var obj2 = {
+        //     name:"Jenny",
+        //     say:function(val){
+        //         console.log(this,val)
+        //     },
+        //     say2:function(val){
+        //         console.log(this,val)
+        //     },
+        //     say3:function(val){
+        //         console.log(this,val)
+        //     }
+        // }
+
+        // obj2.say()
+        // obj2.say.call(obj,"啦啦")
+        // obj2.say2.apply(obj,["嘿嘿"])
+        // obj2.say3.bind(obj,"哈哈")()
+
+        var aLi = document.getElementsByClassName("li1")
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onclick = function () {
+                console.log(this)  //aLi[i]调用的onclick事件，this指向aLi[i]
+
+                setTimeout(function () {
+                    console.log(this)  //window.setTimeout this指向window
+                }, 1000)
+
+                setTimeout(function () {
+                    console.log(this)  //setTimeout括号中的程序不是立即执行，所以在setTimeout括号中的函数用bind()
+                }.bind(this), 2000)
+
+                setTimeout(() => 
+                    console.log(this)  //箭头函数也好使
+                , 3000)
+            }
+        }
+    </script>
+</body>
+
+</html>
