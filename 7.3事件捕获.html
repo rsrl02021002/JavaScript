@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #div1{
+        width: 400px;
+        height: 400px;
+        background-color: red;
+    }
+    #div2{
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+    <script>
+        var oDiv1 = document.getElementById("div1")
+        var oDiv2 = document.getElementById("div2")
+        // 事件捕获  从外向内，直到当前元素
+        oDiv1.addEventListener("click",function(){
+            console.log("我是div1")
+        },true)
+        oDiv2.addEventListener("click",function(){
+            console.log("我是div2")
+        },true)
+        // 事件冒泡 从内向外，由当前元素开始
+        oDiv1.addEventListener("click",function(){
+            console.log("我是div1")
+        },false)
+        oDiv2.addEventListener("click",function(){
+            console.log("我是div2")
+        },false)
+        // 先捕获在冒泡
+    </script>
+</body>
+</html>
