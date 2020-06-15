@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        // var aLi = document.getElementsByTagName("li")
+        // for(var i=0;i<aLi.length;i++){
+        //     aLi[i].onclick=function(){
+        //         console.log(i)
+        //     }
+        // }
+        // i是局部变量，每次执行完没有被保存，i一直是5
+        // 如何解决？
+        
+        // 解决办法1：let有块作用域概念
+        // 替换第18行 for(let i=0;i<aLi.length;i++)
+
+        // 解决办法2：利用闭包，内部函数引用外部函数变量，变量不会被释放
+        var aLi = document.getElementsByTagName("li")
+        for(var i=0;i<aLi.length;i++){
+            // (aLi[i].onclick=function(){
+            //     console.log(i)
+            // })(i)  //会被立即执行，错误
+
+            (function(i){  //i是外部函数的参数
+                aLi[i].onclick=function(){  //内部函数
+                console.log(i)
+                }
+            })(i)
+        }
+    </script>
+</body>
+</html>
