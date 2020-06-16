@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "Hello Word"
+        console.log(str.indexOf("W"))  //6
+        console.log(str.includes("W"))  //true
+
+        // 区分大小写 前者ES5  后者ES6
+        console.log(str.indexOf("w"))  //-1
+        console.log(str.includes("w"))  //false
+
+        let reg = /W/
+        console.log(reg.exec(str))  //["W",index:6,input:"Hello Word"]
+        console.log(reg.test(str))  //true
+        // 区分大小写
+
+        let str2 = "hello Jenny"
+        let reg2 = /n{1}/
+        console.log(reg2.exec(str2))
+
+        let reg3 = /n{2}/  //匹配连续的2个n
+        console.log(reg3.exec(str2))
+
+        let reg4 = /en{2}/  //匹配1个e和连续的2个n
+        console.log(reg4.exec(str2))
+
+        let reg5 = /n{1,}/  //匹配1个n或连续多个n
+        console.log(reg5.exec(str2))
+
+        let reg6 = /n+/  //匹配1个n或连续多个n
+        console.log(reg6.exec(str2))
+
+        let reg7 = /n{0,}/  //匹配0个n或连续多个n
+        console.log(reg7.exec(str2))
+
+        let reg8 = /n*/  //匹配1个n或连续多个n
+        console.log(reg8.exec(str2))
+
+        let reg9 = /n{0,1}/  //匹配1个n或连续多个n
+        console.log(reg9.exec(str2))
+
+        let reg10 = /n?/  //匹配1个n或连续多个n
+        console.log(reg10.exec(str2))
+
+        let reg11 = /n{1,2}/  //贪心 匹配尽量多的字符
+        console.log(reg11.exec(str2))
+
+        let reg12 = /n{1,2}?/  //非贪心 匹配尽量少的字符
+        console.log(reg12.exec(str2))
+
+        let str3 = "aa.jpg"
+        let reg13 = /^aa/  //是不是以aa开头
+        console.log(reg13.exec(str3))
+
+        let reg14 = /jpg$/  //是不是以jpg结尾
+        console.log(reg14.exec(str3))
+
+        let str4 = "hello word\njenny"
+        let reg15 = /./  //.匹配除/n的所有字符 仅匹配一个字符
+        console.log(reg15.exec(str4))
+
+        let reg16 = /.+/  //.匹配除/n的所有字符 +匹配1个或多个 根据贪心，会匹配多个
+        console.log(reg16.exec(str4))
+
+        let str5 = "\nhello world"
+        let reg17 = /./  //匹配除/n的所有字符 如果第一个是\n则往后匹配 如果中途遇到\n则停止匹配
+        console.log(reg17.exec(str5))
+
+        let str6 = "hello world"
+        let reg18 = /e|0/  //匹配e或o 如果左侧满足了，则不再继续匹配
+        console.log(reg18.exec(str6))
+
+        let reg19 = /^e|o.+/  //优先级：或的优先级最低  匹配e开头 或o开始的1个或多个非\n字符串
+        console.log(reg19.exec(str6))
+
+// 咋不贪心了
+        let reg20 = /^(e|h).+/  //()优先级高于| 
+        console.log(reg20.exec(str6))
+
+        let str7 = "abcdeabcde"
+        let reg21 = /[abc]/  //匹配a或b或c  等同于a|b|c
+        console.log(reg21.exec(str7))
+
+        let str8 = "hel324Lo wor123Ld 12asd3"
+        let reg22 = /[a-z]/  //-表示范围 [a-zA-Z0-9_] 匹配小写字母 大写字母 数字 下划线
+        console.log(reg22.exec(str8))
+
+        let reg23 = /[a-zA-Z][0-9]/  //匹配连续的一个字母和一个数字
+        console.log(reg23.exec(str8))
+
+        let reg24 = /^[a-zA-Z][a-zA-Z0-9_]+/  //以字母开头的一个字符 和 一个或多个字母数字下划线
+        console.log(reg24.exec(str8))
+
+        let str9 = "abcdef"
+        let reg25 = /[^abc]/  //^在[]中表示非abc
+        console.log(reg25.exec(str9))
+    </script>
+</body>
+</html>
