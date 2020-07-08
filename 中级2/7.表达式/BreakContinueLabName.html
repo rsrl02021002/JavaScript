@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var num1=0;
+    // 为外层for循环设置的标签名labName为aa
+    aa:for(var i=0;i<10;i++){
+        for(var j=0;j<10;j++){
+            if(i==5&&j==5){
+                // 不用标签名时，打破内层循环，外层循环还在继续，但是这样没有意义
+                // break;
+                // 使用标签名时，打破指定的循环
+                break aa;
+            }
+            num1++;
+        }
+    }
+    console.log(num1);//55
+
+    var num2=0;
+    bb:for(var i=0;i<10;i++){
+        for(var j=0;j<10;j++){
+            if(i==5&&j==5){
+                // 不用标签名，跳过内层循环的一次循环
+                // continue;  //99
+                使用标签名，继续外层循环bb，相当于跳过了 当前外层循环的 所有后续的内层循环
+                continue bb;  //95
+            }
+            num2++;
+        }
+    }
+    console.log(num2);
+</script>
+</body>
+</html>
